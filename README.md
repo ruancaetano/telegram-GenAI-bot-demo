@@ -1,93 +1,103 @@
 # Telegram GenAI Bot
 
-Um bot simples do Telegram que utiliza inteligência artificial generativa para responder mensagens.
+A simple Telegram bot that uses generative AI to reply to messages.
 
-## Funcionalidades
+![Example Screenshot](.github/example.png)
 
-- 🤖 Respostas geradas por IA usando GPT-4o-mini
-- 💬 Interface simples via Telegram
-- 🧹 Comando para limpar histórico de conversa
-- 📝 Comandos de ajuda integrados
+## Features
 
-## Configuração
+- 🤖 AI-generated replies using the `gpt-5` model
+- 💬 Simple interface via Telegram
+- 🧹 Command to clear conversation history
+- 📝 Built-in help commands
+- 🎤 Audio support: transcribes voice messages with Whisper (`whisper-1`) and can reply with voice via TTS (`tts-1-hd`, voice `nova`)
 
-### Pré-requisitos
+## Setup
 
-- Python 3.8+
-- Conta no Telegram
-- Chave da API OpenAI
+### Prerequisites
 
-### Instalação
+- Python 3.11+
+- Telegram account
+- OpenAI API key
 
-1. Clone o repositório:
+### Installation
 
-```bash
-git clone <url-do-repositorio>
-cd telegram-genai-bot-demo
-```
-
-2. Instale as dependências:
+1. Clone the repository
 
 ```bash
-pip install -r requirements.txt
+git clone <repository-url>
+cd telegram-GenAI-bot-demo
 ```
 
-3. Configure as variáveis de ambiente:
+2. Install dependencies
+
+- Option A: Conda (recommended)
 
 ```bash
-cp .env.example .env
+conda env create -f environment.yaml
+conda activate telegram-genai-bot
 ```
 
-Edite o arquivo `.env` com suas credenciais:
+- Option B: pip + venv
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U aiogram openai python-dotenv pygame
+```
+
+3. Create an `.env` file in the project root with your credentials
 
 ```
-TELEGRAM_BOT_TOKEN=seu_token_do_bot
-OPENAI_API_KEY=sua_chave_openai
+TELEGRAM_BOT_TOKEN=your_bot_token
+OPENAI_API_KEY=your_openai_key
 ```
 
-### Como obter as credenciais
+### How to get credentials
 
-1. **Telegram Bot Token**:
+1. **Telegram Bot Token**
 
-   - Fale com @BotFather no Telegram
-   - Use o comando `/newbot`
-   - Siga as instruções para criar seu bot
+   - Talk to @BotFather on Telegram
+   - Use the `/newbot` command
+   - Follow the instructions to create your bot
 
-2. **OpenAI API Key**:
-   - Acesse [OpenAI Platform](https://platform.openai.com/)
-   - Crie uma conta e gere uma chave de API
+2. **OpenAI API Key**
+   - Visit [OpenAI Platform](https://platform.openai.com/)
+   - Create an account and generate an API key
 
-## Uso
+## Usage
 
-Execute o bot:
+Run the bot:
 
 ```bash
 python main.py
 ```
 
-### Comandos disponíveis
+### Available commands
 
-- `/start` - Mensagem de boas-vindas
-- `/help` - Mostra ajuda e comandos disponíveis
-- `/clear_history` - Limpa o histórico da conversa
+- `/start` — Welcome message
+- `/help` — Shows help and available commands
+- `/clear_history` — Clears the conversation history
 
-## Estrutura do Projeto
+Tip: Send a voice message to get it transcribed. Ask for “voice” if you want the bot to reply with audio.
+
+## Project Structure
 
 ```
-telegram-genai-bot-demo/
-├── main.py              # Arquivo principal do bot
-├── generative_service.py # Serviço de IA generativa
-├── message_history.py   # Gerenciamento de histórico
-├── environment.yaml     # Dependências do projeto
-└── README.md           # Este arquivo
+telegram-GenAI-bot-demo/
+├── main.py               # Bot entrypoint
+├── generative_service.py # Generative AI service (Chat, TTS, Whisper)
+├── message_history.py    # Conversation history management
+├── environment.yaml      # Project dependencies
+└── README.md             # This file
 ```
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **aiogram** - Framework para bots do Telegram
-- **OpenAI** - API de inteligência artificial
-- **python-dotenv** - Gerenciamento de variáveis de ambiente
+- **aiogram** — Framework for Telegram bots
+- **OpenAI** — Chat Completions, Whisper (STT), and TTS
+- **python-dotenv** — Environment variable management
 
-## Licença
+## License
 
-Este projeto é de código aberto e está disponível sob a licença MIT.
+This project is open source and available under the MIT license.
